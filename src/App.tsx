@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+/*
+ * @Author: SilentVver 928872571@qq.com
+ * @Date: 2024-10-29 15:11:52
+ * @LastEditors: SilentVver 928872571@qq.com
+ * @LastEditTime: 2024-10-29 15:34:23
+ * @Description: 
+ * 
+ */
 import './App.css';
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  const navigate = useNavigate();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Button type="primary" onClick={() => navigate('/prepare')}>学习</Button>
+    </div >
   );
 }
 
