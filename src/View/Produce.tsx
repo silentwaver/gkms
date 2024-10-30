@@ -6,8 +6,8 @@ import Lesson from "./Process/Lesson";
 function Produce() {
     const maxHP = 30
     const [week, setWeek] = useState(0)
-    const [date, setDate] = useState({})
-    const [processDate, setProcessDate] = useState({})
+    const [date, setDate] = useState({list:[],type:""})
+    const [processDate, setProcessDate] = useState<any>({})
     const [isProcess, setIsProcess] = useState(false);
 
     const [capability, setCapability] = useState({ Math: 0, YuWen: 0, ZongHe: 0 })
@@ -60,7 +60,7 @@ function Produce() {
         console.log("beforeProcessStart")
     };
 
-    function processEnd(addCapability,rest=false) {
+    function processEnd(addCapability?,rest=false) {
         const { Math: ns, YuWen: ny, ZongHe: nz } = addCapability || {};
         const { Math, YuWen, ZongHe } = capability;
 
