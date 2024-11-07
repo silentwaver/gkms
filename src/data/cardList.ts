@@ -4,7 +4,7 @@ import { CardType } from "../types";
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-10-30 21:51:32
  * @LastEditors: SilentVver 928872571@qq.com
- * @LastEditTime: 2024-10-30 22:21:44
+ * @LastEditTime: 2024-11-07 10:52:08
  * @Description: 
  * 
  */
@@ -40,5 +40,6 @@ export const CardList: Array<CardType> = [
         nameStr: 'buff2',
         cost: 3,
         atk: 0,
+        buff:null
     }
 ]

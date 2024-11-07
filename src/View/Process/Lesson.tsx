@@ -2,28 +2,29 @@
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-10-29 15:50:26
  * @LastEditors: SilentVver 928872571@qq.com
- * @LastEditTime: 2024-11-06 23:54:36
+ * @LastEditTime: 2024-11-08 00:08:46
  * @Description: 
  * 
  */
 
 import React, { useEffect, useState } from 'react';
-import { Button, Flex, Progress } from 'antd';
+import { Button, Progress } from 'antd';
 import { CardType } from '../../types';
 import HPBar from '../../Components/HPBar';
+import GKCard from '../../Components/GKCard';
 export default function Lesson(props) {
     const firstHP = 75;
     const secHP = 100;
     const { processEnd, type, cardList, round } = props;
     const [damage, setDamage] = useState(0)
     const [leftRound, setLeftRound] = useState<number>(round)
-    // const [_HPBar.getHP(), set_HPBar.getHP()] = useState(__HPBar.getHP());
+    
     const _HPBar = new HPBar({});
 
     useEffect(()=>{
         if (leftRound < 1) {
             // 结束
-            processEnd({ [type]: Math.min(damage, firstHP + secHP) })
+            _exit()
         } 
     },[leftRound])
 
@@ -49,22 +50,13 @@ export default function Lesson(props) {
         return <>{
             cardList.map((item: CardType) => {
 
-                return <Button
-                    onClick={() => attack(item)}
-                    disabled={isCardAvailable(item.cost)}>
-                    <div>{item.nameStr}</div>
-                    <div>cost:{item.cost}</div>
-                    <div>atk:{item.atk}</div>
-                    {item.def ? <div>def:{item.def}</div> : null}
-                </Button>
+                return <GKCard cardInfo={item} onUseCard={onUseCard} />
             })
         }</>
     }
 
-    function attack(cardInfo: CardType) {
-        console.log(cardInfo)
-        const { cost, atk } = cardInfo
-        _HPBar.setHP(_HPBar.getHP() - cost)
+    function attack(cost:number,atk:number) {
+        _HPBar.setHP(-cost)
         setDamage(damage + atk);
         // 废牌移动
         onRoundEnd()
@@ -72,8 +64,39 @@ export default function Lesson(props) {
 
 
     
+    function handleRest() {
+        _HPBar.setHP(2)
+        onRoundEnd()
+    }
+
+    function onUseCard(cardInfo: CardType){
+        const { cost, atk,def,buff } = cardInfo
+        attack(cost,atk)
+       if(def){ _HPBar.setShield(def);}
+    }
 
 
+
+
+
+    function _enter(){
+        initCombat()
+    }
+
+    function _exit(){
+        processEnd({ [type]: Math.min(damage, firstHP + secHP) })
+    }
+
+    function initCombat(){
+
+        beginCombat()
+    }
+
+    function beginCombat(){
+
+    }
+
+    
     function onRoundEnd() {
         // 牌山整理
          
@@ -82,15 +105,6 @@ export default function Lesson(props) {
 
 
 
-    function isCardAvailable(cost: number) {
-        return _HPBar.getHP() < cost
-    }
-
-    function handleRest() {
-        let _hp = Math.min(_HPBar.maxHP, _HPBar.getHP() + 10);
-        _HPBar.setHP(_hp)
-        onRoundEnd()
-    }
 
     return (
         <div>
