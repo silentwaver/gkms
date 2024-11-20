@@ -9,7 +9,7 @@
 import React from 'react'
 import { CardType } from '../types'
 import { Button } from 'antd'
-import HPBar from './HPBar'
+import HPBar from './Class/HPBar'
 
 export default function GKCard(props: { cardInfo: CardType, onUseCard: Function }) {
   const _HPBar = new HPBar()

@@ -2,25 +2,32 @@
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-10-30 21:34:29
  * @LastEditors: SilentVver 928872571@qq.com
- * @LastEditTime: 2024-11-07 23:28:01
+ * @LastEditTime: 2024-11-09 10:13:31
  * @Description: 
  * 
  */
-
-import { Component } from "react";
+import { CARD_TYPE } from "../Constants/enum";
 
 /** 战斗内卡牌 */
 export interface CardType {
     nameStr: string;
     cost: number;
     atk: number;
+    type: CARD_TYPE
     def?: number;
-    buff?:Object;
+    buffId?: number;
+    stack?: number;
+
 }
 
+export interface EffectType {
+    id: number,
+    desc: string;
+    execute: (cardInfo: CardType, buffInfo?: any) => CardType;
+}
 export interface BuffType {
-    desc:string;
-    comp:Component;
+    stack: number;
+    effects: Array<EffectType>
 }
 
 /** 日程信息 */
@@ -32,5 +39,6 @@ export interface DateType {
 
 export interface HPBarType {
     hp: number;
-    shield:number;
+    shield: number;
 }
+

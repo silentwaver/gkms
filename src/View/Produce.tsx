@@ -5,7 +5,7 @@ import { process } from "../data/process";
 import Lesson from "./Process/Lesson";
 import { CardList } from "../data/cardList";
 import { CardType, DateType } from "../types";
-import HPBar from "../Components/HPBar";
+import HPBar from "../Components/Class/HPBar";
 
 function Produce() {
     const [week, setWeek] = useState(0)
