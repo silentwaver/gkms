@@ -17,6 +17,7 @@ export interface CardType {
     def?: number;
     buffId?: number;
     stack?: number;
+    isOnce?:boolean;
 
 }
 

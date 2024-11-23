@@ -74,7 +74,13 @@ export default function Lesson(props) {
         console.log(JSON.stringify(calCardInfo), 'calCardInfo')
         _HPBar.setHP(-(calCardInfo.cost), calCardInfo.def)
         if (type === CARD_TYPE.ACTION) { setDamage(damage + calCardInfo.atk); }
-        onTurnEnd()
+        if(remainCardUses){
+
+        setRemainCardUses(remainCardUses-1)
+        }else{
+            onTurnEnd()
+        }
+        
     }
 
     function calculateCardInfo(cardInfo) {

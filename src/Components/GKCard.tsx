@@ -11,7 +11,7 @@ import { CardType } from '../types'
 import { Button } from 'antd'
 import HPBar from './Class/HPBar'
 
-export default function GKCard(props: { cardInfo: CardType, onUseCard: Function }) {
+export default function GKCard(props: { cardInfo: CardType, onUseCard: Function,index:number }) {
   const _HPBar = new HPBar()
   
   function isCardAvailable(cost: number) {
@@ -19,7 +19,7 @@ export default function GKCard(props: { cardInfo: CardType, onUseCard: Function 
   }
 
   function onUseCard(cardInfo: CardType){
-    props.onUseCard(cardInfo)
+    props.onUseCard(cardInfo,props.index)
   }
   return (
     <Button
