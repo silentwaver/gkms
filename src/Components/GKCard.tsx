@@ -2,7 +2,7 @@
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-11-07 16:23:35
  * @LastEditors: SilentVver 928872571@qq.com
- * @LastEditTime: 2024-11-07 23:26:43
+ * @LastEditTime: 2024-12-20 17:01:27
  * @Description: 
  * 
  */
@@ -11,7 +11,7 @@ import { CardType } from '../types'
 import { Button } from 'antd'
 import HPBar from './Class/HPBar'
 
-export default function GKCard(props: { cardInfo: CardType, onUseCard: Function,index:number }) {
+export default function GKCard(props: { cardInfo: CardType, onUseCard?: Function,index:number }) {
   const _HPBar = new HPBar()
   
   function isCardAvailable(cost: number) {
@@ -19,12 +19,12 @@ export default function GKCard(props: { cardInfo: CardType, onUseCard: Function,
   }
 
   function onUseCard(cardInfo: CardType){
-    props.onUseCard(cardInfo,props.index)
+    props.onUseCard&&props.onUseCard(cardInfo,props.index)
   }
   return (
     <Button
       onClick={() => onUseCard(props.cardInfo)}
-      disabled={isCardAvailable(props.cardInfo.cost)}>
+      disabled={props.onUseCard?isCardAvailable(props.cardInfo.cost) :true}>
       <div>{props.cardInfo.nameStr}</div>
       <div>cost:{props.cardInfo.cost}</div>
       <div>atk:{props.cardInfo.atk}</div>

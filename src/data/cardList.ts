@@ -5,7 +5,7 @@ import { CardType } from "../types";
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-10-30 21:51:32
  * @LastEditors: SilentVver 928872571@qq.com
- * @LastEditTime: 2024-11-09 10:42:31
+ * @LastEditTime: 2024-12-20 16:43:31
  * @Description: 
  * 
  */
@@ -33,7 +33,8 @@ export const CardList: Array<CardType> = [
         nameStr: 'atk3',
         cost: 5,
         atk: 30,
-        type:CARD_TYPE.ACTION
+        type:CARD_TYPE.ACTION,
+        isOnce:true
     },
     {
         nameStr: '集中+3',

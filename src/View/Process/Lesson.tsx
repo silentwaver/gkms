@@ -2,7 +2,7 @@
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-10-29 15:50:26
  * @LastEditors: SilentVver 928872571@qq.com
- * @LastEditTime: 2024-11-20 16:17:14
+ * @LastEditTime: 2024-12-20 17:16:38
  * @Description: 
  * 
  */
@@ -24,7 +24,7 @@ export default function Lesson(props) {
     // const [extraTurn,setExtraTurn] = useState<number>(0)
     const [buffMap, setBuffMap] = useState(new Map())
     const [itemList,setItemList] = useState([])
-    const [remainCardUses,setRemainCardUses] = useState(1)
+    const [remainCardUses,setRemainCardUses] = useState(0)
     const _HPBar = new HPBar({});
 
     useEffect(() => {
@@ -155,8 +155,6 @@ export default function Lesson(props) {
                 return buffIns.render()
             })}
         </>
-
-
     }
 
 
@@ -169,7 +167,7 @@ export default function Lesson(props) {
             <Button onClick={() => handleRest()}>rest</Button>
             <HPBar />
             <div>Buff Area<div> <BuffArea /></div></div>
-            <div>Card Area<div><CardArea onUseCard={onUseCard} cardList={cardList} /></div></div>
+            <div>Card Area<div><CardArea onUseCard={onUseCard} cardList={cardList} turn={leftTurn} /></div></div>
         </div>
     )
 }
