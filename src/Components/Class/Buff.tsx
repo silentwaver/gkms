@@ -55,7 +55,7 @@ class Buff extends Component {
         return this.#stack;
     }
     
-    execute(trigger: BUFF_TRIGGER_TYPE,section:BUFF_SECTION,cardInfo:CardType) {
+    execute(trigger: BUFF_TRIGGER_TYPE,section:BUFF_SECTION,cardInfo:CardType){
         if (trigger === this.triggerType && this.section === section) {
             let _cardInfo = {...cardInfo}
             for (const effect of this.effects) {

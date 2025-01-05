@@ -1,12 +1,12 @@
 /*
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-10-30 21:34:29
- * @LastEditors: SilentVver 928872571@qq.com
- * @LastEditTime: 2024-11-09 10:13:31
+ * @LastEditors: SilentVver silentwaver.code@gmail.com
+ * @LastEditTime: 2025-01-05 20:20:55
  * @Description: 
  * 
  */
-import { CARD_TYPE } from "../Constants/enum";
+import { CARD_TYPE, ITEM_TRIGGER_TYPE } from "../Constants/enum";
 
 /** 战斗内卡牌 */
 export interface CardType {
@@ -29,6 +29,11 @@ export interface EffectType {
 export interface BuffType {
     stack: number;
     effects: Array<EffectType>
+}
+
+export interface ItemType {
+    effects:Array<EffectType>;
+    itemType: ITEM_TRIGGER_TYPE
 }
 
 /** 日程信息 */
