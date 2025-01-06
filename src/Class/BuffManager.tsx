@@ -2,7 +2,7 @@
  * @Author: SilentVver silentwaver.code@gmail.com
  * @Date: 2024-11-10 18:07:23
  * @LastEditors: SilentVver silentwaver.code@gmail.com
- * @LastEditTime: 2025-01-05 21:21:54
+ * @LastEditTime: 2025-01-06 18:33:47
  * @Description: 
  * 
  */
@@ -17,7 +17,8 @@ let instance = null;
 class BuffManager extends Component {
     
     state= {
-        buffMap:new Map() as Map<number,Buff> };
+        buffMap:new Map() as Map<number,Buff>
+     };
 
     constructor(props?) {
         super(props);
@@ -63,6 +64,16 @@ class BuffManager extends Component {
                 }
             }
         })
+    }
+
+    checkBuff(buffId:number,stack?:number){
+        if(!stack){
+            return this.state.buffMap.has(buffId)
+        }
+    }
+
+    getBuffIns(buffId:number){
+        return this.state.buffMap.get(buffId)
     }
 
     destoryIns(){

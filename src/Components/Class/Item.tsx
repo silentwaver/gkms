@@ -2,7 +2,7 @@
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-12-20 17:09:56
  * @LastEditors: SilentVver silentwaver.code@gmail.com
- * @LastEditTime: 2025-01-04 13:49:56
+ * @LastEditTime: 2025-01-06 18:37:11
  * @Description: 
  * 
  */
@@ -22,9 +22,26 @@ class Item extends Component {
     constructor(props:{itemInfo:any}){
         super(props)
 
-        const {itemInfo} = props.itemInfo;
-        this.#trigger=itemInfo
+        const {name,effects,id,desc,itemType,trigger} = props.itemInfo;
+        this.name = name;
+        this.id = id;
+        this.desc = desc;
+        this.itemType = itemType;
+        this.effects = effects;
+        this.#trigger=trigger
 
+    }
+
+    trigger(lessonInfo){
+        if(this.#isTriggered) return;
+        let _t = this.#trigger(lessonInfo)
+        // 未被觸發退出
+        if(!_t) return;
+        this.#stack--
+        if(this.#stack == 0){
+            this.#isTriggered = true;
+        }
+        return;
     }
     
 

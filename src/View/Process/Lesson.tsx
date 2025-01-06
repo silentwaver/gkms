@@ -2,7 +2,7 @@
  * @Author: SilentVver 928872571@qq.com
  * @Date: 2024-10-29 15:50:26
  * @LastEditors: SilentVver silentwaver.code@gmail.com
- * @LastEditTime: 2025-01-05 21:26:06
+ * @LastEditTime: 2025-01-06 18:28:15
  * @Description: 
  * 
  */
@@ -16,6 +16,8 @@ import Buff from '../../Components/Class/Buff';
 import { buffDic } from '../../data';
 import { BUFF_DURATION_TYPE, BUFF_SECTION, BUFF_TRIGGER_TYPE, CARD_TYPE } from '../../Constants/enum';
 import BuffManager from '../../Class/BuffManager';
+import ItemManager from '../../Class/ItemManager';
+
 export default function Lesson(props) {
     const firstHP = 75;
     const secHP = 100;
@@ -27,6 +29,8 @@ export default function Lesson(props) {
     const [remainCardUses,setRemainCardUses] = useState(0)
     const _HPBar = new HPBar({});
     const buffManager = new BuffManager()
+    const itemManager = new ItemManager()
+
     useEffect(() => {
         if (leftTurn  < 1) {
             // 结束
@@ -96,9 +100,7 @@ export default function Lesson(props) {
     }
 
     function onTurnStart(){
-        itemList.forEach(value=>{
-            
-        })
+        itemManager.triggerItemList({buff:buffManager})
     }
 
     function onTurnEnd() {
@@ -126,6 +128,7 @@ export default function Lesson(props) {
             <Button onClick={() => handleRest()}>rest</Button>
             <HPBar />
             <div>Buff Area<div>{buffManager.render()}</div></div>
+            <div>Item Area<div>{itemManager.render()}</div></div>
             <div>Card Area<div><CardArea onUseCard={onUseCard} cardList={cardList} turn={leftTurn} /></div></div>
         </div>
     )
